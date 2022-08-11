@@ -1,0 +1,6 @@
+- Set is a ds that can hold a collection of values but the values must be unique,
+- You can store a mix of different data types in Sets. Sets contain string,object,boolean,numbers
+- the size of sets are dynamic. You don't have to declare the size of a set before creating it.
+- Sets don't maintain an insertion order.
+- Sets are iterable. They can be used with a for of loop.
+- Searching and deleting a element in faster in an array compared to a set.
