@@ -2,27 +2,31 @@
 class Que {
   constructor(initialSize = 0, fillValue = 0) {
     this.items = new Array(initialSize).fill(fillValue);
+    this.front = -1;
+    this.rear = -1;
+    this.size = initialSize;
+  }
+
+  isEmpty() {
+    this.size === 0;
+  }
+
+  enque(element) {
+    this.items[this.size] = element;
+    this.size = this.size + 1;
+    if (this.front === -1) {
+      this.front = 0;
+    }
+    this.rear += 1;
   }
 
   deque() {
-    return this.items.shift();
-  }
-  enque(element) {
-    this.items.push(element);
-    return this.items;
-  }
-  peek() {
-    return this.isEmpty() ? null : this.items[0];
-  }
-  isEmpty() {
-    return this.items.length === 0;
+    if (this.isEmpty()) return null;
+    const poppedElement = this.items[this.front];
+    this.items[this.front] = undefined;
+    this.front = this.front + 1;
+    this.size-=1;
+
+    return poppedElement;
   }
 }
-
-// Creating a new stack with a starting size and fill value,
-const stack = new Stack(5, 0);
-console.log(stack);
-
-// Making the last element as undefined
-console.log(stack.pop());
-console.log(stack);
