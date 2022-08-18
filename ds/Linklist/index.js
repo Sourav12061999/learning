@@ -49,6 +49,71 @@ class Linkedlist {
         this.size++;
     }
 
+    // Has lenear time complexity
+    insert(value,index){
+        if(index != undefined && index<0 || index>this.size ){
+            return 
+        }
+        if(index === 0){
+            return this.prepend(value);
+        }
+        if(index === this.size){
+            return this.append(value);
+        }
+
+        const node = new Node(value);
+        let prev = this.head;
+        for(let i=0;i<index-1;i++){
+            prev = prev.next;
+        }
+        node.next = prev.next;
+        prev.next = node;
+        this.size++;
+    }
+    // Has lenear time complexity
+    remove(index){
+        if(index<0 || index>this.size-1){
+            return null;
+        }
+        let removedNode;
+        if(index === 0){
+             removedNode = this.head;
+             this.head = this.head.next;
+        }else{
+            let prev = this.head;
+            for(let i=0;i<index-1;i++){
+                prev = prev.next;
+            }
+            removedNode = prev.next;
+            prev.next = prev.next.next;
+        }
+        this.size--;
+        return removedNode.value;
+    }
+
+    // Has lenear time complexity
+    removeValue(value){
+        if(this.isEmpty()){
+            return null;
+        }
+        if(this.head.value === value){
+            this.head === this.head.next;
+            this.size--;
+            return value;
+        }
+        let prev = this.head;
+        for(let i=0;i<this.size-1;i++){
+          if(prev.next.value === value){
+              prev.next = prev.next.next;
+              this.size--;
+              return value;
+          }
+          prev = element.next;
+        }
+
+        return null;
+    }
+
     print(){
         if(this.isEmpty()){
             console.log("List is Empty");
@@ -71,6 +136,12 @@ list.print();
 list.prepend(20);
 list.print();
 list.append(30);
+list.print();
+list.insert(50,1);
+list.print();
+list.remove(1);
+list.print();
+list.removeValue(10);
 list.print();
 console.log(list.isEmpty());
 console.log(list.getSize());
