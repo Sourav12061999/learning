@@ -108,10 +108,37 @@ class Linkedlist {
               this.size--;
               return value;
           }
-          prev = element.next;
+          prev = prev.next;
         }
 
         return null;
+    }
+
+    search(value){
+        if(this.isEmpty()) return -1;
+        let curr = this.head;
+        let index=0;
+        while(curr){
+            if(curr.value === value){
+                return index;
+            }
+            index++;
+            curr = curr.next;
+        }
+
+        return -1;
+    }
+
+    reverse(){
+        let prev = null;
+        let curr = this.head;
+        while(curr){
+            let next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        this.head = prev;
     }
 
     print(){
@@ -138,6 +165,8 @@ list.print();
 list.append(30);
 list.print();
 list.insert(50,1);
+list.print();
+list.reverse();
 list.print();
 list.remove(1);
 list.print();
