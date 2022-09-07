@@ -1,3 +1,3 @@
 import "products/ProductsIndex";
-import "cart/CartIndex";
+import "cart/CartShow";
 console.log("Container");
