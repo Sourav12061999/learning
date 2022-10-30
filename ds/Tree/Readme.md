@@ -21,3 +21,27 @@
    - DFS(Depth First Search)
    - BFS(Breadth-first search)
    - Deletion:- Delete a node given it's value
+
+- #### DFS Algorithm:- 
+   - The DFS algo starts at the root node and explores as far as possible along each branch before backtracking.
+   - Visit the root  node. Visit all the nodes in left subtree and visit all the nodes in right subtree.
+   - Depening on Order it can be devided in three types:- 
+        - Preorder
+        - Inorder
+        - Postorder
+   - Preorder:- Read the data of the node -> visit the left subtree -> visit the right subtree.
+   - Inorder:- Visit the left subtree -> visit the data of the code -> visit the right subtree.
+   - Postorder:- Visit the left subtree -> Visit the right subtree -> read the node data;
+
+- #### BFS Algorithm:- 
+   - Explore all nodes at the present depth prior to moving on the nodes at next depth level.
+   - Steps:- 
+        1. Create a que.
+        2. Enque the root Node.
+        3. As long as the node exists do the following operations:- 
+             - Deque the node from the front.
+             - Read the Node's value.
+             - Enque the node's left child if it exist.
+             - Deque the node's right child if it exist.
+
+       

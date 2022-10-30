@@ -8,7 +8,7 @@ class Node {
 
 class BinarySearchTree {
   constructor() {
-    this.root =  null;
+    this.root = null;
   }
 
   isEmpty() {
@@ -38,11 +38,114 @@ class BinarySearchTree {
       }
     }
   }
+
+  search(value) {
+    if (this.isEmpty()) return false;
+    else {
+      return this.searchNode(this.root,value);
+    }
+  }
+
+  searchNode(root, value) {
+    if (root === null) return false;
+    if (root.value === value) {
+      return true;
+    } else if (root.value > value) {
+      return this.searchNode(root.left, value);
+    } else {
+      return this.searchNode(root.right, value);
+    }
+  }
+
+  preOrder(root){
+   if(root){
+    console.log(root.value);
+    this.preOrder(root.left);
+    this.preOrder(root.right);
+   }
+  }
+
+  inOrder(root){
+    if(root){
+      this.inOrder(root.left);
+      console.log(root.value);
+      this.inOrder(root.right);
+    }
+  }
+
+  postOrder(root){
+    if(root){
+      this.inOrder(root.left);
+      this.inOrder(root.right);
+      console.log(root.value);
+    }
+  }
+
+  levelOrder(){
+    const que =[];
+    que.push(this.root);
+    while(que.length){
+      let curr = que.shift();
+      console.log(curr.value);
+      if(curr.left) que.push(curr.left);
+      if(curr.right) que.push(curr.right);
+    }
+  }
+
+  min(root){
+    if(!root){
+      return 0;
+    }
+    if(root.left === null) return root.value;
+    else {
+      return this.min(root.left);
+    }
+  }
+  max(root){
+    if(!root){
+      return 0;
+    }
+    if(root.right === null) return root.value;
+    else {
+      return this.max(root.right);
+    }
+  }
+
+  deleteNode(root,value){
+    if(root === null) return root;
+    if(value<root.value) {
+      root.left = this.deleteNode(root.left,value);
+    }else if(value>root.value){
+      root.right = this.deleteNode(root.right,value);
+    }else{
+      if(!root.left && !root.right){
+        return null;
+      }
+      if(!root.left) return root.right;
+      else if(!root.right) return root.left;
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right,root.value);
+    }
+    return root;
+  }
+
+  delete(value){
+    this.root = this.deleteNode(this.root,value);
+  }
 }
 
 const bst = new BinarySearchTree();
 console.log(bst.isEmpty());
-bst.insert(15);
+bst.insert(10);
 bst.insert(5);
+bst.insert(15);
 bst.insert(3);
+// bst.levelOrder();
+// bst.insert(7);
+// console.log(bst.preOrder(bst.root));
+// bst.levelOrder();
+// console.log(bst.min(bst.root));
+// console.log(bst.max(bst.root));
+bst.delete(3);
+bst.levelOrder();
 console.log(bst);
