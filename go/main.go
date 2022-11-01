@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
+	"log"
+
+	"github.com/Sourav12061999/my-app/helpers"
 )
 
 // Capital Latter thing are public and smaller latter things are private
 
 func main() {
 	fmt.Println("Hello World")
-	var whatToSay string
-	whatToSay = "Go"
+	var whatToSay string = "Go"
 	fmt.Println(whatToSay)
 	var i int = 10
 	fmt.Println("Hello Int:- ", i)
@@ -17,6 +19,10 @@ func main() {
 	fmt.Println(whatWasSaid)
 	var whatWasSaidOne, whatWasSaidTwo string = saySomethingTwice()
 	fmt.Println(whatWasSaidOne, whatWasSaidTwo)
+
+	var something helpers.SomeType
+	something.Name = "Sourav"
+	log.Println(something.Name)
 
 }
 
