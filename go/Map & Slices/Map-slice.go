@@ -61,4 +61,11 @@ func mySlices() {
 	})
 	log.Println(mySlice2)
 	log.Println(mySlice2[0:2])
+
+	var courses = []string{"reactjs", "vuejs", "python", "typescript"}
+	// Removing something at any index
+	const index int = 1
+	courses = append(courses[:1], courses[index+1:]...)
+	log.Println(courses)
+
 }
