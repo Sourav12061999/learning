@@ -4,6 +4,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 )
 
 const url string = "https://lco.dev"
@@ -20,6 +21,10 @@ func main() {
 			log.Println(err2)
 		} else {
 			log.Println(string(dataByte))
+			var resStr strings.Builder
+			byteCount, _ := resStr.Write(dataByte)
+			log.Println(byteCount)
+			log.Println(resStr.String())
 		}
 	}
 
