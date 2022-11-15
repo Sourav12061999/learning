@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+        margin-inline: auto;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="">Download</a>
+    <canvas></canvas>
+  </body>
+  <script>
+    const canvas = document.querySelector("canvas");
+
+    const ctx = canvas.getContext("2d");
+    canvas.width = 600;
+    canvas.height = 400;
+
+    let imgObj = new Image();
+    imgObj.onload = function () {
+      let w = canvas.width;
+      let nw = imgObj.naturalWidth;
+      let nh = imgObj.naturalHeight;
+      let aspect = nw / nh;
+      let h = canvas.width / aspect;
+      canvas.height = h;
+      ctx.drawImage(imgObj, 0, 0, w, h);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+      console.log(imageData);
+      ctx.clearRect(20, 20, 500, 500);
+      download();
+    };
+    imgObj.src = "./img.png";
+
+    var download = function () {
+      var link = document.createElement("a");
+      link.download = "filename.png";
+      link.href = document.querySelector("canvas").toDataURL();
+      link.click();
+    };
+  </script>
+</html>
